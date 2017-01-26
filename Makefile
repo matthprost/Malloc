@@ -5,12 +5,11 @@
 ## Login   <prost_m@epitech.eu>
 ##
 ## Started on  Wed Jan 25 14:09:51 2017 Matthias Prost
-## Last update Wed Jan 25 15:17:07 2017 Matthias Prost
+## Last update Thu Jan 26 13:43:03 2017 Matthias Prost
 ##
 
 
 CFLAGS	=				-W -Wall -Werror -fpic
-CFLAGS  +=      -I./include
 
 CC	=	gcc
 
@@ -49,11 +48,10 @@ re:	 fclean all
 
 ## Compilation -----------------------------------------------------------------
 
-$(NAME):	$(OBJ) $(OBJS)
-		@$(CC) -shared -o $(NAME) $(OBJ) && $(CC) -o $(NAMES) $(OBJS)  && \
+$(NAME):	$(OBJS)
+		@$(CC) $(FLAGS) -o $(NAMES) $(OBJS) && \
 		$(ECHO) $(GREEN) "[OK] gcc" $(TEAL) $(OBJ) $(DEFAULT) || \
 		$(ECHO) $(RED) "[ERROR] gcc" $(TEAL) $(OBJ) $(DEFAULT)
-		@$(ECHO) $(FINISH) "\nCompilation Succesfully of "$(NAME) $(DEFAULT)
 		@$(ECHO) $(FINISH) "\nCompilation Succesfully of "$(NAMES) $(DEFAULT)
 
 %.o:		%.c
