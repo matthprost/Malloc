@@ -5,7 +5,7 @@
 ** Login   <matthias.prost@epitech.eu>
 **
 ** Started on  Wed Jan 25 14:58:41 2017 Matthias Prost
-** Last update Thu Jan 26 14:35:50 2017 Matthias Prost
+** Last update Thu Jan 26 15:20:15 2017 Matthias Prost
 */
 
 #include <stdlib.h>
@@ -16,16 +16,18 @@ void		*my_malloc(size_t size)
 {
   if (brk(sbrk(size)) == -1)
     {
+      printf("Done!");
       return (NULL);
     }
   else
-    sbrk(size);
+    return (sbrk(size));
   return (NULL);
 }
 
 int		main()
 {
   char	*str;
+  char	*temp;
   int		i;
   char	*buff;
 
@@ -34,9 +36,17 @@ int		main()
       printf("ERROR MALLOC\n");
       return 0;
     }
+  if ((temp = my_malloc(sizeof(char) * 5)) == NULL)
+    {
+      printf("ERROR MALLOC\n");
+      return 0;
+    }
   buff = "Hello";
   i = -1;
   while (buff[++i])
-    str[i] = buff[i];
-  printf("%s\n", buff);
+    {
+      str[i] = buff[i];
+      str[i] = temp[i];
+    }
+  printf("%s\n%s\n", buff, temp);
 }
