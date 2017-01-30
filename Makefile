@@ -5,20 +5,22 @@
 ## Login   <prost_m@epitech.eu>
 ##
 ## Started on  Wed Jan 25 14:09:51 2017 Matthias Prost
-## Last update Thu Jan 26 14:31:32 2017 Matthias Prost
+## Last update Mon Jan 30 15:44:39 2017 Matthias Prost
 ##
 
 
-CFLAGS	=				-W -Wall -Werror -fpic -g -g3
+CFLAGS	=				-W -Wall -Werror -fpic -I./include
 
 CC	=	gcc
 
 NAME    =	libmy_malloc.so
 NAMES		= malloc
 
-SRC	=	 malloc.c \
+SOURCES = src
 
-SRCS = main.c \
+SRC	=	 $(SOURCES)/malloc.c \
+
+SRCS = $(SOURCES)/main.c \
 
 ECHO	=	/bin/echo -e
 DEFAULT	=	"\033[00m"
@@ -47,8 +49,8 @@ fclean:		clean
 re:	 fclean all
 
 lib:
-	gcc -c Wall -Werror -fpic main.c
-	gcc -shared -o libmy_malloc.so main.o
+	gcc -c -Wall -Werror -fpic src/main.c -I./include
+	gcc -shared -o libmy_malloc.so src/main.o -I./include
 
 ## Compilation -----------------------------------------------------------------
 
