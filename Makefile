@@ -5,7 +5,7 @@
 ## Login   <prost_m@epitech.eu>
 ##
 ## Started on  Wed Jan 25 14:09:51 2017 Matthias Prost
-## Last update Mon Jan 30 15:55:34 2017 Matthias Prost
+## Last update Mon Jan 30 17:12:23 2017 Matthias Prost
 ##
 
 
@@ -37,12 +37,12 @@ OBJS = $(SRCS:.c=.o)
 all:		$(NAME)
 
 clean:
-		@rm -f $(OBJ) && rm -f $(OBJS) && \
-		$(ECHO) $(GREEN) "[OK] rm" $(TEAL) $(OBJ) $(DEFAULT) || \
-		$(ECHO) $(RED) "[ERROR] rm" $(TEAL) $(OBJ) $(DEFAULT)
+		@rm -f $(SOURCES)/$(OBJ) $(SOURCES)/$(OBJS) && \
+		$(ECHO) $(GREEN) "[OK] rm" $(TEAL) $(OBJ) $(OBJS) $(DEFAULT) || \
+		$(ECHO) $(RED) "[ERROR] rm" $(TEAL) $(OBJ) $(OBJS) $(DEFAULT)
 
 fclean:		clean
-		@rm -f $(NAME) && rm -f $(NAMES) && \
+		@rm -f $(NAME) $(NAMES) && \
 		$(ECHO) $(GREEN) "[OK] rm" $(TEAL) $(NAME) $(DEFAULT) || \
 		$(ECHO) $(RED) "[ERROR] rm" $(TEAL) $(NAME) $(DEFAULT)
 
