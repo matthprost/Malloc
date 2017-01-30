@@ -5,7 +5,7 @@
 ** Login   <matthias.prost@epitech.eu>
 **
 ** Started on  Wed Jan 25 14:58:41 2017 Matthias Prost
-** Last update Mon Jan 30 15:47:24 2017 Matthias Prost
+** Last update Mon Jan 30 16:26:42 2017 Matthias Prost
 */
 
 #include "malloc.h"
@@ -17,7 +17,7 @@ t_header *get_block(size_t size)
   tmp = head;
   while (tmp)
     {
-      if (!tmp->free && tmp->size >= size)
+      if (tmp->free && tmp->size >= size)
 	return (tmp);
       tmp = tmp->next;
     }
@@ -61,10 +61,16 @@ void free(void *block)
 // int		main()
 // {
 //   char	*str;
+//   char	*tmp;
 //   int		i;
 //   char	*buff;
 //
-//   if ((str = malloc(sizeof(char) * 5)) == NULL)
+//   if ((str = my_malloc(sizeof(char) * 5)) == NULL)
+//     {
+//       printf("ERROR MALLOC\n");
+//       return 0;
+//     }
+//   if ((tmp = my_malloc(sizeof(char) * 5)) == NULL)
 //     {
 //       printf("ERROR MALLOC\n");
 //       return 0;
@@ -72,7 +78,10 @@ void free(void *block)
 //   buff = "Hello";
 //   i = -1;
 //   while (buff[++i])
-//     str[i] = buff[i];
+//     {
+//       str[i] = buff[i];
+//       tmp[i] = buff[i];
+//     }
 //   printf("%s\n", buff);
 //   // my_free(str);
 // }

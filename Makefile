@@ -5,11 +5,11 @@
 ## Login   <prost_m@epitech.eu>
 ##
 ## Started on  Wed Jan 25 14:09:51 2017 Matthias Prost
-## Last update Mon Jan 30 15:44:39 2017 Matthias Prost
+## Last update Mon Jan 30 15:55:34 2017 Matthias Prost
 ##
 
 
-CFLAGS	=				-W -Wall -Werror -fpic -I./include
+CFLAGS	=				-W -Wall -Werror -Wextra -fpic -I./include
 
 CC	=	gcc
 
