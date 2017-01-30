@@ -5,7 +5,7 @@
 ## Login   <prost_m@epitech.eu>
 ##
 ## Started on  Wed Jan 25 14:09:51 2017 Matthias Prost
-## Last update Mon Jan 30 17:23:33 2017 Loïc Lopez
+## Last update Mon Jan 30 18:18:27 2017 Matthias Prost
 ##
 
 
@@ -36,12 +36,12 @@ OBJS = $(SRCS:.c=.o)
 all:		$(NAME)
 
 clean:
-		@rm -f $(SOURCES)/$(OBJS) && \
+		@rm -f $(OBJS) && \
 		$(ECHO) $(GREEN) "[OK] rm" $(TEAL) $(OBJS) $(DEFAULT) || \
 		$(ECHO) $(RED) "[ERROR] rm" $(TEAL) $(OBJS) $(DEFAULT)
 
 fclean:		clean
-		@rm -f $(NAME) $(NAMES) && \
+		@rm -f ../$(NAME) $(NAMES) && \
 		$(ECHO) $(GREEN) "[OK] rm" $(TEAL) $(NAME) $(DEFAULT) || \
 		$(ECHO) $(RED) "[ERROR] rm" $(TEAL) $(NAME) $(DEFAULT)
 
@@ -49,7 +49,7 @@ re:	 fclean all
 
 lib:
 	gcc -c $(CFLAGS) $(SRCS)
-	gcc -shared -o libmy_malloc.so $(OBJS) $(CFLAGS)
+	gcc -shared -o ../libmy_malloc.so $(OBJS) $(CFLAGS)
 
 ## Compilation -----------------------------------------------------------------
 

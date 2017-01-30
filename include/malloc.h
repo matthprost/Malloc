@@ -5,7 +5,7 @@
 ** Login   <matthias.prost@epitech.eu>
 **
 ** Started on  Mon Jan 30 14:18:39 2017 Matthias Prost
-** Last update Mon Jan 30 17:47:35 2017 Matthias Prost
+** Last update Mon Jan 30 18:03:45 2017 Matthias Prost
 */
 
 #ifndef _MALLOC_H_
@@ -29,7 +29,7 @@ t_list *head, *end;
 void	*malloc(size_t size);
 t_list *get_block(size_t size);
 
-void	*realloc(void *ptr, size_t size)
+void	*realloc(void *ptr, size_t size);
 
 void	free(void *ptr);
 
