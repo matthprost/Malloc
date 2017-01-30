@@ -46,6 +46,10 @@ fclean:		clean
 
 re:	 fclean all
 
+lib:
+	gcc -c Wall -Werror -fpic main.c
+	gcc -shared -o libmy_malloc.so main.o
+
 ## Compilation -----------------------------------------------------------------
 
 $(NAME):	$(OBJS)
