@@ -5,7 +5,7 @@
 ## Login   <prost_m@epitech.eu>
 ##
 ## Started on  Wed Jan 25 14:09:51 2017 Matthias Prost
-## Last update Mon Jan 30 17:12:23 2017 Matthias Prost
+## Last update Mon Jan 30 17:23:33 2017 Matthias Prost
 ##
 
 
@@ -20,7 +20,8 @@ SOURCES = src
 
 SRC	=	 $(SOURCES)/malloc.c \
 
-SRCS = $(SOURCES)/main.c \
+SRCS = $(SOURCES)/malloc.c \
+	$(SOURCES)/realloc.c \
 
 ECHO	=	/bin/echo -e
 DEFAULT	=	"\033[00m"
