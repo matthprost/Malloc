@@ -5,30 +5,35 @@
 ** Login   <matthias.prost@epitech.eu>
 **
 ** Started on  Wed Jan 25 14:58:41 2017 Matthias Prost
-** Last update Tue Jan 31 12:00:48 2017 Matthias Prost
+** Last update Tue Jan 31 17:37:31 2017 loic lopez
 */
 
 #include "malloc.h"
 
 void	*malloc(size_t size)
 {
-  t_list	*list;
-  void		*buff;
+  t_list	*new_link;
 
-  if (size <= 0)
+  new_link = sbrk(sizeof(t_list));
+  if(new_link == (void *)-1 || size <= 0)
     return (NULL);
-  buff = sbrk(sizeof(t_list));
-  if (buff == (void *) -1)
+  new_link->size = size;
+  new_link->next = NULL;
+  new_link->prev = NULL;
+  new_link->isFree = false;
+  new_link->data = sbrk(size);
+  if (new_link->data == (void *)-1)
     return (NULL);
-  list = buff;
-  list->stock = sbrk(size);
-  list->size = size;
-  list->free = false;
-  list->next = NULL;
-  if (!first)
-    first = list;
-  if (last)
-    last->next = list;
-	last = list;
-  return (list->stock);
+  if (!listHead)
+    {
+      listHead = new_link;
+      list = new_link;
+    }
+  else
+    {
+      list->next = new_link;
+      new_link->prev = list;
+      list = new_link;
+    }
+  return (new_link->data);
 }

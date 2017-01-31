@@ -5,23 +5,26 @@
 ## Login   <prost_m@epitech.eu>
 ##
 ## Started on  Wed Jan 25 14:09:51 2017 Matthias Prost
-## Last update Tue Jan 31 11:09:01 2017 Matthias Prost
+## Last update Tue Jan 31 16:34:14 2017 lopez_i
 ##
 
 
-CFLAGS	=		-W -Wall -Werror -Wextra -fpic -I../include
+CFLAGS	=	-W -Wall -Werror -Wextra -fPIC -I../include
 
 CC	=	gcc
 
 NAME    =	libmy_malloc.so
-NAMES		= malloc
+NAMES	=	malloc
 
-SOURCES = src
 
-SRCS = malloc.c \
-		realloc.c \
-		free.c \
-		show_alloc_mem.c \
+SRCS =	malloc.c \
+	realloc.c \
+	free.c \
+	show_alloc_mem.c \
+	lib.c	\
+	print_address.c	\
+	main.c
+
 
 ECHO	=	/bin/echo -e
 DEFAULT	=	"\033[00m"
