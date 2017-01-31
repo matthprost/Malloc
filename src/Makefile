@@ -5,7 +5,7 @@
 ## Login   <prost_m@epitech.eu>
 ##
 ## Started on  Wed Jan 25 14:09:51 2017 Matthias Prost
-## Last update Mon Jan 30 18:18:27 2017 Matthias Prost
+## Last update Tue Jan 31 11:09:01 2017 Matthias Prost
 ##
 
 
@@ -21,6 +21,7 @@ SOURCES = src
 SRCS = malloc.c \
 		realloc.c \
 		free.c \
+		show_alloc_mem.c \
 
 ECHO	=	/bin/echo -e
 DEFAULT	=	"\033[00m"

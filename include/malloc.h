@@ -5,7 +5,7 @@
 ** Login   <matthias.prost@epitech.eu>
 **
 ** Started on  Mon Jan 30 14:18:39 2017 Matthias Prost
-** Last update Mon Jan 30 18:03:45 2017 Matthias Prost
+** Last update Tue Jan 31 11:27:04 2017 Matthias Prost
 */
 
 #ifndef _MALLOC_H_
@@ -21,16 +21,18 @@ typedef struct s_list
 {
   size_t		size;
   bool		free;
+  void		*stock;
   struct s_list	*next;
 } t_list;
 
-t_list *head, *end;
+t_list *first, *last;
 
 void	*malloc(size_t size);
-t_list *get_block(size_t size);
 
 void	*realloc(void *ptr, size_t size);
 
 void	free(void *ptr);
+
+void	show_alloc_mem();
 
 #endif
