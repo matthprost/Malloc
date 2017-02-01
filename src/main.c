@@ -21,8 +21,8 @@ int main()
     }
 
 
-  str3 = malloc(3);
-  for ( i = 0; i < 2; i++)
+  str3 = malloc(4);
+  for ( i = 0; i < 3; i++)
     {
       str3 += 'i';
     }

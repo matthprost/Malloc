@@ -5,7 +5,7 @@
 ** Login   <matthias.prost@epitech.eu>
 **
 ** Started on  Tue Jan 31 11:05:54 2017 Matthias Prost
-** Last update Wed Feb  1 18:43:23 2017 Matthias Prost
+** Last update Wed Feb  1 18:59:26 2017 Matthias Prost
 */
 
 #include "malloc.h"
@@ -40,9 +40,9 @@ void	show_alloc_mem()
 
   while (list)
     {
-      print_address(list);
+      print_address(list->stock);
       my_putstr(" - ");
-      print_address(list + list->size);
+      print_address(list->stock + list->size);
       my_putstr(" : ");
       my_put_nbr(list->size);
       my_putstr(" bytes\n");
