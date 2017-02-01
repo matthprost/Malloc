@@ -5,7 +5,7 @@
 ** Login   <matthias.prost@epitech.eu>
 **
 ** Started on  Wed Jan 25 14:58:41 2017 Matthias Prost
-** Last update Tue Jan 31 17:37:31 2017 loic lopez
+** Last update Wed Feb 01 15:26:02 2017 loic lopez
 */
 
 #include "malloc.h"
@@ -14,6 +14,7 @@ void	*malloc(size_t size)
 {
   t_list	*new_link;
 
+  new_link = sbrk(0);
   new_link = sbrk(sizeof(t_list));
   if(new_link == (void *)-1 || size <= 0)
     return (NULL);
