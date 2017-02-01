@@ -5,7 +5,7 @@
 ** Login   <matthias.prost@epitech.eu>
 **
 ** Started on  Mon Jan 30 17:30:08 2017 Matthias Prost
-** Last update Wed Feb  1 18:46:45 2017 Matthias Prost
+** Last update Wed Feb  1 19:12:53 2017 Matthias Prost
 */
 
 #include "malloc.h"
@@ -14,20 +14,19 @@
 
 void	free(void *ptr)
 {
-  (void)ptr;
-//   t_list	*tmp;
-//
-//   if (!ptr)
-//     return;
-//   tmp = listHead;
-//   while (tmp->next)
-//     {
-//       if (tmp + SIZE_TO_MOVE == ptr)
-// 	     {
-// 	  //write(1, "salut\n", 6);
-//         return;
-// 	     }
-//       tmp = tmp->next;
-//     }
-// //    brk(tmp->data);
+  t_list	*tmp;
+
+  if (!ptr)
+    return;
+  tmp = listHead;
+  while (tmp->next)
+    {
+      if (tmp + SIZE_TO_MOVE == ptr)
+	     {
+	  //write(1, "salut\n", 6);
+        return;
+	     }
+      tmp = tmp->next;
+    }
+//    brk(tmp->data);
 }

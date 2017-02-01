@@ -5,7 +5,7 @@
 ** Login   <matthias.prost@epitech.eu>
 **
 ** Started on  Mon Jan 30 14:18:39 2017 Matthias Prost
-** Last update Wed Feb  1 18:58:21 2017 Matthias Prost
+** Last update Wed Feb  1 19:07:53 2017 Matthias Prost
 */
 
 #ifndef _MALLOC_H_
@@ -35,5 +35,6 @@ void	print_address(void *ptr);
 int	my_putstr(char *str);
 int	my_putchar(char c);
 int	my_strlen(char *str);
+int my_put_nbr(int nb);
 
 #endif
