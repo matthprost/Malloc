@@ -5,7 +5,7 @@
 ## Login   <prost_m@epitech.eu>
 ##
 ## Started on  Wed Jan 25 14:09:51 2017 Matthias Prost
-## Last update Mon Jan 30 17:23:33 2017 Matthias Prost
+## Last update Wed Feb  1 21:30:24 2017 lopez_i
 ##
 
 all:
@@ -20,5 +20,5 @@ fclean:
 re:
 	@make re  --no-print-directory -C src
 
-lib:
-	@make lib  --no-print-directory -C src
+.PHONY:
+	@make .PHONY --no-print-directory -C src

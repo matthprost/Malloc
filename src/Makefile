@@ -9,63 +9,55 @@
 ##
 
 
-CFLAGS	=	-W -Wall -Werror -Wextra -fPIC -I../include
+CC      =       gcc
 
-CC	=	gcc
+NAME    =       ../libmy_malloc.so
 
-NAME    =	libmy_malloc.so
-NAMES	=	malloc
+ECHO    =       /bin/echo -e \
 
+DEFAULT =       "\033[00m"
+GREEN   =       "\033[0;32m"
+TEAL    =       "\033[1;36m"
+RED     =       "\033[5;31m"
 
-SRCS =	malloc.c \
+CFLAGS  +=      -Wextra -Wall -Werror -fPIC
+CFLAGS  +=      -I../include/
+CFLAGS  +=      -D_BSD_SOURCE -D_XOPEN_SOURCE
+
+SRC	=	free.c \
+	malloc.c \
 	realloc.c \
-	free.c \
 	show_alloc_mem.c \
-	lib.c	\
-	print_address.c	\
-	main.c
+	print_address.c \
+	lib.c
 
 
-ECHO	=	/bin/echo -e
-DEFAULT	=	"\033[00m"
-GREEN	=	"\033[0;32m"
-TEAL	=	"\033[1;36m"
-RED	=	"\033[5;31m"
-YELLOW  =	"\033[1;33m"
-FINISH  =       "\033[5;1;35m"
+OBJ	=	$(SRC:.c=.o)
 
+all:	$(NAME)
 
-OBJS = $(SRCS:.c=.o)
-
-all:		$(NAME)
+$(NAME):	$(OBJ)
+	@$(CC) -c $(CFLAGS) $(SRC)
+	@$(CC) -shared -o $(NAME) $(OBJ) && \
+	$(ECHO) $(GREEN) "[OK]" $(NAME) $(TEAL) $(OBJ) $(DEFAULT) && \
+	$(ECHO) $(GREEN) "[OK] created shared library:" $(NAME) $(DEFAULT)
 
 clean:
-		@rm -f $(OBJS) && \
-		$(ECHO) $(GREEN) "[OK] rm" $(TEAL) $(OBJS) $(DEFAULT) || \
-		$(ECHO) $(RED) "[ERROR] rm" $(TEAL) $(OBJS) $(DEFAULT)
+	@rm -f $(OBJ) && \
+	$(ECHO) $(GREEN) "[OK] remove" $(TEAL) $(OBJ) $(DEFAULT) || \
+	$(ECHO) $(RED) "[ERROR] doesn't exist" $(TEAL) $(OBJ) $(DEFAULT)
 
 fclean:		clean
-		@rm -f ../$(NAME) $(NAMES) && \
-		$(ECHO) $(GREEN) "[OK] rm" $(TEAL) $(NAME) $(DEFAULT) || \
-		$(ECHO) $(RED) "[ERROR] rm" $(TEAL) $(NAME) $(DEFAULT)
+	@rm -f $(NAME) && \
+  $(ECHO) $(GREEN) "[OK] remove" $(TEAL) $(NAME) $(DEFAULT) || \
+  $(ECHO) $(RED) "[ERROR] doesn't exist" $(TEAL) $(OBJ) $(DEFAULT)
 
-re:	 fclean all
+re: fclean all
 
-lib:
-	gcc -c $(CFLAGS) $(SRCS)
-	gcc -shared -o ../libmy_malloc.so $(OBJS) $(CFLAGS)
+.c.o:
+	@$(CC) $(CFLAGS) -c -o $@ $< && \
+	$(ECHO) $(GREEN) "[OK]" $(TEAL) $^ $(DEFAULT) || \
+	$(ECHO) $(RED) "[ERROR] doesn't exist" $(TEAL) $^ $(DEFAULT)
 
-## Compilation -----------------------------------------------------------------
-
-$(NAME):	$(OBJS)
-		@$(CC) $(FLAGS) -o $(NAMES) $(OBJS) && \
-		$(ECHO) $(GREEN) "[OK] gcc" $(TEAL) $(OBJS) $(DEFAULT) || \
-		$(ECHO) $(RED) "[ERROR] gcc" $(TEAL) $(OBJS) $(DEFAULT)
-		@$(ECHO) $(FINISH) "\nCompilation Succesfully of "$(NAMES) $(DEFAULT)
-
-%.o:		%.c
-		@$(CC) -c $^ -o $@ $(CFLAGS) && \
-		$(ECHO) $(GREEN) "[OK] gcc" $(TEAL) $^ $(DEFAULT) || \
-		$(ECHO) $(RED) "[ERROR] gcc" $(TEAL) $^ $(DEFAULT)
 
 .PHONY: 	all clean fclean re
