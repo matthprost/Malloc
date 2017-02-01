@@ -5,20 +5,47 @@
 ** Login   <matthias.prost@epitech.eu>
 **
 ** Started on  Tue Jan 31 11:05:54 2017 Matthias Prost
-** Last update Tue Jan 31 16:43:10 2017 loic lopez
+** Last update Wed Feb 01 14:34:05 2017 loic lopez
 */
 
 #include "malloc.h"
+
+int     my_put_nbr(int nb)
+{
+  if (nb < 0)
+    {
+      my_putchar('-');
+      nb = -nb;
+    }
+  if (nb < 10)
+    my_putchar(nb + '0');
+  else if (nb > 9)
+    {
+      my_put_nbr(nb / 10);
+      my_putchar(nb % 10 + '0');
+    }
+  else
+    my_putstr("Entrée Invalide");
+  return (0);
+}
 
 void	show_alloc_mem()
 {
   t_list	*list;
 
   list = listHead;
+  my_putstr("break : ");
+  print_address(sbrk(0));
+  my_putstr("\n");
+
   while (list)
     {
-      print_address(list->data);
-      my_putstr("\n");
+      print_address(list);
+      my_putstr(" - ");
+      print_address(list->data + list->size);
+      my_putstr(" : ");
+      my_put_nbr(list->size);
+      my_putstr(" bytes\n");
       list = list->next;
     }
 }

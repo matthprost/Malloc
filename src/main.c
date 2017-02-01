@@ -27,6 +27,7 @@ int main()
       str3 += 'i';
     }
 
+  show_alloc_mem();
   free(str);
   free(str2);
   free(str3);
