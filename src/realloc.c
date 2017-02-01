@@ -5,7 +5,7 @@
 ** Login   <matthias.prost@epitech.eu>
 **
 ** Started on  Mon Jan 30 17:25:21 2017 Matthias Prost
-** Last update Mon Jan 30 18:04:09 2017 Matthias Prost
+** Last update Wed Feb  1 18:31:01 2017 Matthias Prost
 */
 
 #include "malloc.h"
@@ -26,5 +26,5 @@ void	*realloc(void *ptr, size_t size)
       memcpy(buff, ptr, list->size);
       free(ptr);
     }
-  return buff;
+  return (buff);
 }

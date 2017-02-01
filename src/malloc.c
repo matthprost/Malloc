@@ -5,7 +5,7 @@
 ** Login   <matthias.prost@epitech.eu>
 **
 ** Started on  Wed Jan 25 14:58:41 2017 Matthias Prost
-** Last update Wed Feb 01 15:26:02 2017 loic lopez
+** Last update Wed Feb  1 18:45:24 2017 Matthias Prost
 */
 
 #include "malloc.h"
@@ -14,17 +14,12 @@ void	*malloc(size_t size)
 {
   t_list	*new_link;
 
-  new_link = sbrk(0);
-  new_link = sbrk(sizeof(t_list));
+  new_link = sbrk(sizeof(t_list) + size);
   if(new_link == (void *)-1 || size <= 0)
     return (NULL);
   new_link->size = size;
   new_link->next = NULL;
-  new_link->prev = NULL;
   new_link->isFree = false;
-  new_link->data = sbrk(size);
-  if (new_link->data == (void *)-1)
-    return (NULL);
   if (!listHead)
     {
       listHead = new_link;
@@ -33,8 +28,7 @@ void	*malloc(size_t size)
   else
     {
       list->next = new_link;
-      new_link->prev = list;
       list = new_link;
     }
-  return (new_link->data);
+  return ((void *)(new_link + 1));
 }

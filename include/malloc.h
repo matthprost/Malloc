@@ -5,7 +5,7 @@
 ** Login   <matthias.prost@epitech.eu>
 **
 ** Started on  Mon Jan 30 14:18:39 2017 Matthias Prost
-** Last update Tue Jan 31 16:51:15 2017 loic lopez
+** Last update Wed Feb  1 18:28:48 2017 Matthias Prost
 */
 
 #ifndef _MALLOC_H_
@@ -21,8 +21,6 @@ typedef struct s_list
   size_t		size;
   bool	isFree;
   struct s_list	*next;
-  struct s_list	*prev;
-  void		*data;
 }	t_list;
 
 t_list	*listHead;
