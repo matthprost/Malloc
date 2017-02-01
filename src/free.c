@@ -5,12 +5,10 @@
 ** Login   <matthias.prost@epitech.eu>
 **
 ** Started on  Mon Jan 30 17:30:08 2017 Matthias Prost
-** Last update Wed Feb  1 19:12:53 2017 Matthias Prost
+** Last update Wed Feb  1 19:25:55 2017 Matthias Prost
 */
 
 #include "malloc.h"
-
-#define SIZE_TO_MOVE 210
 
 void	free(void *ptr)
 {
@@ -21,12 +19,26 @@ void	free(void *ptr)
   tmp = listHead;
   while (tmp->next)
     {
-      if (tmp + SIZE_TO_MOVE == ptr)
+      my_putstr("break: ");
+      print_address(tmp->stock);
+      my_putstr("\n");
+      print_address((void *)tmp);
+      my_putstr("-");
+      print_address(ptr);
+      my_putstr("\n");
+      if ((void *)tmp == ptr)
 	     {
-	  //write(1, "salut\n", 6);
+	  write(1, "Done!\n", 6);
         return;
 	     }
       tmp = tmp->next;
     }
+    my_putstr("break: ");
+    print_address(tmp->stock);
+    my_putstr("\n");
+    print_address((void *)tmp);
+    my_putstr("-");
+    print_address(ptr);
+    my_putstr("\n");
 //    brk(tmp->data);
 }
