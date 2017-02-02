@@ -5,40 +5,26 @@
 ** Login   <matthias.prost@epitech.eu>
 **
 ** Started on  Mon Jan 30 17:30:08 2017 Matthias Prost
-** Last update Wed Feb  1 19:25:55 2017 Matthias Prost
+** Last update Thu Feb  2 18:34:32 2017 Matthias Prost
 */
 
 #include "malloc.h"
 
+t_list *get_list(void *ptr)
+{
+  char *tmp;
+
+  tmp = ptr;
+  return (ptr = tmp - (sizeof(t_list) - 8));
+}
+
 void	free(void *ptr)
 {
-  t_list	*tmp;
+  t_list	*current;
 
   if (!ptr)
     return;
-  tmp = listHead;
-  while (tmp->next)
-    {
-      my_putstr("break: ");
-      print_address(tmp->stock);
-      my_putstr("\n");
-      print_address((void *)tmp);
-      my_putstr("-");
-      print_address(ptr);
-      my_putstr("\n");
-      if ((void *)tmp == ptr)
-	     {
-	  write(1, "Done!\n", 6);
-        return;
-	     }
-      tmp = tmp->next;
-    }
-    my_putstr("break: ");
-    print_address(tmp->stock);
-    my_putstr("\n");
-    print_address((void *)tmp);
-    my_putstr("-");
-    print_address(ptr);
-    my_putstr("\n");
-//    brk(tmp->data);
+  current = get_list(ptr);
+  if (current->isFree != 0)
+    current->isFree = 1;
 }

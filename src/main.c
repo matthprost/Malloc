@@ -11,24 +11,20 @@ int main()
   str = malloc(2);
   for (i = 0; i < 2; i++)
     {
-      str += 'i';
+      str[i] = 'i';
     }
-
-  str2 = malloc(3);
+  free(str);
+  str2 = malloc(2);
   for ( i = 0; i < 2; i++)
     {
-      str2 += 'i';
+      str2[i] = 'i';
     }
-
-
   str3 = malloc(4);
   for ( i = 0; i < 3; i++)
     {
-      str3 += 'i';
+      str3[i] = 'i';
     }
-
-  free(str);
-  // free(str2);
-  // free(str3);
+  free(str2);
+  free(str3);
   return 0;
 }

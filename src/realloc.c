@@ -5,7 +5,7 @@
 ** Login   <matthias.prost@epitech.eu>
 **
 ** Started on  Mon Jan 30 17:25:21 2017 Matthias Prost
-** Last update Wed Feb  1 18:31:01 2017 Matthias Prost
+** Last update Thu Feb  2 18:23:22 2017 Matthias Prost
 */
 
 #include "malloc.h"
@@ -17,7 +17,7 @@ void	*realloc(void *ptr, size_t size)
 
   if (!ptr)
     return (malloc(size));
-  list = (t_list *)ptr - 1;
+  list = get_list(ptr);
   if (list->size >= size)
     return (ptr);
   buff = malloc(size);

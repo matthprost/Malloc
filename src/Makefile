@@ -5,7 +5,7 @@
 ## Login   <prost_m@epitech.eu>
 ##
 ## Started on  Wed Jan 25 14:09:51 2017 Matthias Prost
-## Last update Tue Jan 31 16:34:14 2017 lopez_i
+## Last update Thu Feb  2 18:21:03 2017 Matthias Prost
 ##
 
 
@@ -22,7 +22,7 @@ RED     =       "\033[5;31m"
 
 CFLAGS  +=      -Wextra -Wall -Werror -fPIC
 CFLAGS  +=      -I../include/
-CFLAGS  +=      -D_BSD_SOURCE -D_XOPEN_SOURCE
+CFLAGS  +=      -D_DEFAULT_SOURCE -D_XOPEN_SOURCE
 
 SRC	=	free.c \
 	malloc.c \
