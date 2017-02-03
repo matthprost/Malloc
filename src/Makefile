@@ -20,7 +20,7 @@ GREEN   =       "\033[0;32m"
 TEAL    =       "\033[1;36m"
 RED     =       "\033[5;31m"
 
-CFLAGS  +=      -Wextra -Wall -Werror -fPIC
+CFLAGS  +=      -Wextra -Wall -Werror -fPIC -lpthread
 CFLAGS  +=      -I../include/
 CFLAGS  +=      -D_DEFAULT_SOURCE -D_XOPEN_SOURCE
 
