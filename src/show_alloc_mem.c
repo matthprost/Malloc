@@ -5,7 +5,7 @@
 ** Login   <matthias.prost@epitech.eu>
 **
 ** Started on  Tue Jan 31 11:05:54 2017 Matthias Prost
-** Last update Thu Feb  2 16:49:44 2017 Matthias Prost
+** Last update Fri Feb 03 13:24:22 2017 loic lopez
 */
 
 #include "malloc.h"
@@ -35,16 +35,19 @@ void	show_alloc_mem()
 
   list = listHead;
   my_putstr("break : ");
-  print_address(sbrk(0));
+  my_putstr("0x");
+  my_putnbr_base_size((size_t)sbrk(0), "0123456789ABCDEF");
   my_putstr("\n");
-
   while (list)
     {
-      print_address(list->data);
+      my_putstr("0x");
+      my_putnbr_base_size((size_t)list, "0123456789ABCDEF");
       my_putstr(" - ");
-      print_address(list->data + list->size);
+      my_putstr("0x");
+      my_putnbr_base_size((size_t)list + sizeof(t_list) + list->size
+      , "0123456789ABCDEF");
       my_putstr(" : ");
-      my_put_nbr(list->size);
+      my_put_nbr(list->size + sizeof(t_list));
       my_putstr(" bytes\n");
       list = list->next;
     }

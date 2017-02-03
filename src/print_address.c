@@ -5,7 +5,7 @@
 ** Login   <loic.lopez@epitech.eu>
 **
 ** Started on  Tue Jan 31 16:18:13 2017 loic lopez
-** Last update Wed Feb  1 19:02:08 2017 Matthias Prost
+** Last update Fri Feb 03 13:23:35 2017 loic lopez
 */
 
 #include "malloc.h"
@@ -22,10 +22,4 @@ int     my_putnbr_base_size(size_t nbr, char *base)
   if (start != 0)
     my_putnbr_base_size(start, base);
   return (my_putchar(base[mod]));
-}
-
-void     print_address(void *ptr)
-{
-  my_putstr("0x");
-  my_putnbr_base_size((size_t)ptr, "0123456789ABCDEF");
 }
