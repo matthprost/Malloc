@@ -5,7 +5,7 @@
 ** Login   <matthias.prost@epitech.eu>
 **
 ** Started on  Mon Jan 30 14:18:39 2017 Matthias Prost
-** Last update Fri Feb 03 13:34:52 2017 loic lopez
+** Last update Sun Feb 05 18:13:35 2017 loic lopez
 */
 
 #ifndef _MALLOC_H_
@@ -41,5 +41,6 @@ int	my_putchar(char c);
 int	my_strlen(char *str);
 int my_put_nbr(int nb);
 t_list *get_list(void *ptr);
+void	*calloc(size_t nmemb, size_t size);
 
 #endif

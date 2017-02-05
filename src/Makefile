@@ -29,7 +29,8 @@ SRC	=	free.c \
 	realloc.c \
 	show_alloc_mem.c \
 	print_address.c \
-	lib.c
+	lib.c \
+	calloc.c
 
 
 OBJ	=	$(SRC:.c=.o)
