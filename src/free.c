@@ -5,10 +5,22 @@
 ** Login   <matthias.prost@epitech.eu>
 **
 ** Started on  Mon Jan 30 17:30:08 2017 Matthias Prost
-** Last update Fri Feb 03 14:47:51 2017 loic lopez
+** Last update Sun Feb 05 21:15:04 2017 loic lopez
 */
 
 #include "malloc.h"
+
+t_list *fusion(t_list *current)
+{
+  if (current->next && current->next->isFree)
+    {
+      current->size += sizeof(t_list) + current->next->size;
+      current->next = current->next->next;
+      if (current->next)
+        current->next->prev = current;
+    }
+  return (current);
+}
 
 t_list *get_list(void *ptr)
 {
@@ -29,9 +41,10 @@ void	free(void *ptr)
     return;
   }
   current = get_list(ptr);
-  if (current->isFree != 0)
-    current->isFree = 1;
-  if (current->next == NULL && ptr < sbrk(0))
-    sbrk(0 - sizeof(t_list) - current->size);
+  current->isFree = 1;
+  if(current->prev && current->prev->isFree)
+    current = fusion(current->prev);
+  if (current->next && current->next->isFree)
+    current = fusion(current);
   pthread_mutex_unlock(&global_lock);
 }

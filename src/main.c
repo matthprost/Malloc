@@ -9,10 +9,11 @@ int main()
   str = malloc(2);
   str2 = malloc(2);
   str3 = malloc(4);
-  free(str2);
-  free(str3);
-  free(str);
   show_alloc_mem();
-  //realloc(str2, 5);
+  realloc(str2, 5);
+  realloc(str, 5);
+  realloc(str3, 5);
+  str3 = malloc(4);
+  show_alloc_mem();
   return 0;
 }

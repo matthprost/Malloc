@@ -5,12 +5,24 @@
 ** Login   <matthias.prost@epitech.eu>
 **
 ** Started on  Wed Jan 25 14:58:41 2017 Matthias Prost
-** Last update Fri Feb 03 14:43:56 2017 loic lopez
+** Last update Sun Feb 05 21:46:01 2017 loic lopez
 */
 
 #include "malloc.h"
 
-t_list	*verif_block(size_t size)
+void	split(t_list *current, size_t size)
+{
+  t_list	*new;
+
+  new = current->data + size;
+  new->size = current->size - size;
+  new->next = current->next;
+  new->isFree = 1;
+  current->size = size;
+  current = new;
+}
+
+t_list	*verif_list(size_t size)
 {
   t_list	*tmp;
 
@@ -18,7 +30,7 @@ t_list	*verif_block(size_t size)
   while (tmp)
     {
       if (tmp->size >= size && tmp->isFree == 1)
-	return (tmp);
+        return (tmp);
       tmp = tmp->next;
     }
   return (NULL);
@@ -26,6 +38,11 @@ t_list	*verif_block(size_t size)
 
 void	initlink(t_list *new_link, size_t size)
 {
+  new_link->data = new_link->str;
+  new_link->size = size;
+  new_link->next = NULL;
+  new_link->prev = NULL;
+  new_link->isFree = 0;
   if (!listHead)
     {
       listHead = new_link;
@@ -34,33 +51,36 @@ void	initlink(t_list *new_link, size_t size)
   else
     {
       list->next = new_link;
+      new_link->prev = list;
       list = new_link;
     }
-  new_link->data = new_link->str;
-  new_link->size = size;
-  new_link->next = NULL;
-  new_link->isFree = 0;
 }
 
 void	*malloc(size_t size)
 {
   t_list	*new_link;
 
-  // if ((new_link = verif_block(size)) != NULL)
-  //     return (new_link->data);
   pthread_mutex_lock(&global_lock);
-  new_link = sbrk(0);
-  if(new_link == (void *)-1 || size <= 0)
-    {
-      pthread_mutex_unlock(&global_lock);
-      return (NULL);
-    }
-  if ((sbrk(sizeof(t_list) + size)) == (void *)-1)
-    {
-      pthread_mutex_unlock(&global_lock);
-      return (NULL);
-    }
-  initlink(new_link, size);
+  new_link = verif_list(size);
+  if (new_link)
+  {
+    split(new_link, size);
+    new_link->isFree = 0;
+  }
+  else
+  {
+    if((new_link = sbrk(0)) == (void *)-1 || size <= 0)
+      {
+        pthread_mutex_unlock(&global_lock);
+        return (NULL);
+      }
+    if (sbrk(sizeof(t_list) + size) == (void *)-1)
+      {
+        pthread_mutex_unlock(&global_lock);
+        return (NULL);
+      }
+    initlink(new_link, size);
+  }
   pthread_mutex_unlock(&global_lock);
   return (new_link->data);
 }
