@@ -5,12 +5,12 @@
 ** Login   <matthias.prost@epitech.eu>
 **
 ** Started on  Wed Jan 25 14:58:41 2017 Matthias Prost
-** Last update Sun Feb 05 21:46:01 2017 loic lopez
+** Last update Tue Feb  7 14:21:05 2017 Matthias Prost
 */
 
 #include "malloc.h"
 
-void	split(t_list *current, size_t size)
+void		split(t_list *current, size_t size)
 {
   t_list	*new;
 
@@ -22,7 +22,7 @@ void	split(t_list *current, size_t size)
   current = new;
 }
 
-t_list	*verif_list(size_t size)
+t_list		*verif_list(size_t size)
 {
   t_list	*tmp;
 
@@ -36,7 +36,7 @@ t_list	*verif_list(size_t size)
   return (NULL);
 }
 
-void	initlink(t_list *new_link, size_t size)
+void		initlink(t_list *new_link, size_t size)
 {
   new_link->data = new_link->str;
   new_link->size = size;

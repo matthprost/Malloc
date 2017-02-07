@@ -5,12 +5,12 @@
 ** Login   <matthias.prost@epitech.eu>
 **
 ** Started on  Tue Jan 31 11:05:54 2017 Matthias Prost
-** Last update Fri Feb 03 13:24:22 2017 loic lopez
+** Last update Tue Feb  7 14:21:49 2017 Matthias Prost
 */
 
 #include "malloc.h"
 
-int     my_put_nbr(int nb)
+int		my_put_nbr(int nb)
 {
   if (nb < 0)
     {
@@ -29,7 +29,7 @@ int     my_put_nbr(int nb)
   return (0);
 }
 
-void	show_alloc_mem()
+void		show_alloc_mem()
 {
   t_list	*list;
 

@@ -5,12 +5,12 @@
 ** Login   <loic.lopez@epitech.eu>
 **
 ** Started on  Tue Jan 31 16:18:13 2017 loic lopez
-** Last update Fri Feb 03 13:23:35 2017 loic lopez
+** Last update Tue Feb  7 14:21:16 2017 Matthias Prost
 */
 
 #include "malloc.h"
 
-int     my_putnbr_base_size(size_t nbr, char *base)
+int		my_putnbr_base_size(size_t nbr, char *base)
 {
   size_t        start;
   size_t        taille;

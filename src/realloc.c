@@ -5,12 +5,12 @@
 ** Login   <matthias.prost@epitech.eu>
 **
 ** Started on  Mon Jan 30 17:25:21 2017 Matthias Prost
-** Last update Fri Feb 03 14:29:51 2017 loic lopez
+** Last update Tue Feb  7 14:21:28 2017 Matthias Prost
 */
 
 #include "malloc.h"
 
-void	*realloc(void *ptr, size_t size)
+void		*realloc(void *ptr, size_t size)
 {
   void		*buff;
   t_list	*list;

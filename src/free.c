@@ -5,12 +5,12 @@
 ** Login   <matthias.prost@epitech.eu>
 **
 ** Started on  Mon Jan 30 17:30:08 2017 Matthias Prost
-** Last update Sun Feb 05 21:15:04 2017 loic lopez
+** Last update Tue Feb  7 14:20:10 2017 Matthias Prost
 */
 
 #include "malloc.h"
 
-t_list *fusion(t_list *current)
+t_list		*fusion(t_list *current)
 {
   if (current->next && current->next->isFree)
     {
@@ -22,15 +22,15 @@ t_list *fusion(t_list *current)
   return (current);
 }
 
-t_list *get_list(void *ptr)
+t_list		*get_list(void *ptr)
 {
   char *tmp;
-
+  
   tmp = ptr;
   return (ptr = tmp - (sizeof(t_list) - 8));
 }
 
-void	free(void *ptr)
+void		free(void *ptr)
 {
   t_list	*current;
 

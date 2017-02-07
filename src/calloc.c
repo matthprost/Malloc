@@ -5,23 +5,23 @@
 ** Login   <loic.lopez@epitech.eu>
 **
 ** Started on  Sun Feb 05 17:07:33 2017 loic lopez
-** Last update Sun Feb 05 17:11:52 2017 loic lopez
+** Last update Tue Feb  7 14:19:28 2017 Matthias Prost
 */
 
 #include "malloc.h"
 
-void	*calloc(size_t nmemb, size_t size)
+void		*calloc(size_t nmemb, size_t size)
 {
-	size_t	finalSize;
-	void	*memory;
-
-	if (!nmemb || !size)
-		return (NULL);
-	finalSize = nmemb * size;
-	if (size != finalSize / nmemb)
-	 return (NULL);
-	if (!(memory = malloc(finalSize)))
-		return (NULL);
-	memset(memory, 0, finalSize);
-	return (memory);
+  size_t	finalSize;
+  void		*memory;
+  
+  if (!nmemb || !size)
+    return (NULL);
+  finalSize = nmemb * size;
+  if (size != finalSize / nmemb)
+    return (NULL);
+  if (!(memory = malloc(finalSize)))
+    return (NULL);
+  memset(memory, 0, finalSize);
+  return (memory);
 }
