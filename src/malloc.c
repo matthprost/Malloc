@@ -5,7 +5,7 @@
 ** Login   <matthias.prost@epitech.eu>
 **
 ** Started on  Wed Jan 25 14:58:41 2017 Matthias Prost
-** Last update Tue Feb  7 14:21:05 2017 Matthias Prost
+** Last update Tue Feb  7 14:50:50 2017 Matthias Prost
 */
 
 #include "malloc.h"
@@ -59,28 +59,28 @@ void		initlink(t_list *new_link, size_t size)
 void	*malloc(size_t size)
 {
   t_list	*new_link;
-
+  
   pthread_mutex_lock(&global_lock);
   new_link = verif_list(size);
   if (new_link)
-  {
-    split(new_link, size);
-    new_link->isFree = 0;
-  }
+    {
+      split(new_link, size);
+      new_link->isFree = 0;
+    }
   else
-  {
-    if((new_link = sbrk(0)) == (void *)-1 || size <= 0)
-      {
-        pthread_mutex_unlock(&global_lock);
-        return (NULL);
-      }
-    if (sbrk(sizeof(t_list) + size) == (void *)-1)
-      {
-        pthread_mutex_unlock(&global_lock);
-        return (NULL);
-      }
-    initlink(new_link, size);
-  }
+    {
+      if((new_link = sbrk(0)) == (void *)-1 || size <= 0)
+	{
+	  pthread_mutex_unlock(&global_lock);
+	  return (NULL);
+	}
+      if (sbrk(sizeof(t_list) + size) == (void *)-1)
+	{
+	  pthread_mutex_unlock(&global_lock);
+	  return (NULL);
+	}
+      initlink(new_link, size);
+    }
   pthread_mutex_unlock(&global_lock);
   return (new_link->data);
 }

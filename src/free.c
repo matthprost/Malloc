@@ -5,7 +5,7 @@
 ** Login   <matthias.prost@epitech.eu>
 **
 ** Started on  Mon Jan 30 17:30:08 2017 Matthias Prost
-** Last update Tue Feb  7 14:20:10 2017 Matthias Prost
+** Last update Tue Feb  7 14:50:24 2017 Matthias Prost
 */
 
 #include "malloc.h"
@@ -36,10 +36,10 @@ void		free(void *ptr)
 
   pthread_mutex_lock(&global_lock);
   if (!ptr)
-  {
-    pthread_mutex_unlock(&global_lock);
-    return;
-  }
+    {
+      pthread_mutex_unlock(&global_lock);
+      return;
+    }
   current = get_list(ptr);
   current->isFree = 1;
   if(current->prev && current->prev->isFree)
