@@ -34,10 +34,10 @@ void		free(void *ptr)
 {
   t_list	*current;
 
-  pthread_mutex_lock(&global_lock);
+  pthread_mutex_lock(&g_global_lock);
   if (!ptr)
     {
-      pthread_mutex_unlock(&global_lock);
+      pthread_mutex_unlock(&g_global_lock);
       return;
     }
   current = get_list(ptr);
@@ -46,5 +46,5 @@ void		free(void *ptr)
     current = fusion(current->prev);
   if (current->next && current->next->isFree)
     current = fusion(current);
-  pthread_mutex_unlock(&global_lock);
+  pthread_mutex_unlock(&g_global_lock);
 }

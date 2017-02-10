@@ -5,7 +5,7 @@
 ** Login   <matthias.prost@epitech.eu>
 **
 ** Started on  Mon Jan 30 14:18:39 2017 Matthias Prost
-** Last update Tue Feb  7 14:19:07 2017 Matthias Prost
+** Last update Fri Feb 10 14:05:27 2017 Loic Lopez
 */
 
 #ifndef _MALLOC_H_
@@ -27,10 +27,10 @@ typedef struct s_list
   char		str[1];
 }		t_list;
 
-t_list		*listHead;
-t_list		*list;
+t_list		*g_listHead;
+t_list		*g_list;
 
-pthread_mutex_t	global_lock;
+pthread_mutex_t	g_global_lock;
 
 void		*malloc(size_t size);
 void		*realloc(void *ptr, size_t size);

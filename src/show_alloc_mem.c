@@ -5,7 +5,7 @@
 ** Login   <matthias.prost@epitech.eu>
 **
 ** Started on  Tue Jan 31 11:05:54 2017 Matthias Prost
-** Last update Tue Feb  7 14:51:33 2017 Matthias Prost
+** Last update Fri Feb 10 14:06:46 2017 Loic Lopez
 */
 
 #include "malloc.h"
@@ -32,8 +32,8 @@ int		my_put_nbr(int nb)
 void		show_alloc_mem()
 {
   t_list	*list;
-  
-  list = listHead;
+
+  list = g_listHead;
   my_putstr("break : ");
   my_putstr("0x");
   my_putnbr_base_size((size_t)sbrk(0), "0123456789ABCDEF");

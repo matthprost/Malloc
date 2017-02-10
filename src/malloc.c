@@ -5,7 +5,7 @@
 ** Login   <matthias.prost@epitech.eu>
 **
 ** Started on  Wed Jan 25 14:58:41 2017 Matthias Prost
-** Last update Tue Feb  7 14:50:50 2017 Matthias Prost
+** Last update Fri Feb 10 14:07:23 2017 Loic Lopez
 */
 
 #include "malloc.h"
@@ -26,7 +26,7 @@ t_list		*verif_list(size_t size)
 {
   t_list	*tmp;
 
-  tmp = listHead;
+  tmp = g_listHead;
   while (tmp)
     {
       if (tmp->size >= size && tmp->isFree == 1)
@@ -43,24 +43,24 @@ void		initlink(t_list *new_link, size_t size)
   new_link->next = NULL;
   new_link->prev = NULL;
   new_link->isFree = 0;
-  if (!listHead)
+  if (!g_listHead)
     {
-      listHead = new_link;
-      list = new_link;
+      g_listHead = new_link;
+      g_list = new_link;
     }
   else
     {
-      list->next = new_link;
-      new_link->prev = list;
-      list = new_link;
+      g_list->next = new_link;
+      new_link->prev = g_list;
+      g_list = new_link;
     }
 }
 
 void	*malloc(size_t size)
 {
   t_list	*new_link;
-  
-  pthread_mutex_lock(&global_lock);
+
+  pthread_mutex_lock(&g_global_lock);
   new_link = verif_list(size);
   if (new_link)
     {
@@ -71,16 +71,16 @@ void	*malloc(size_t size)
     {
       if((new_link = sbrk(0)) == (void *)-1 || size <= 0)
 	{
-	  pthread_mutex_unlock(&global_lock);
+	  pthread_mutex_unlock(&g_global_lock);
 	  return (NULL);
 	}
       if (sbrk(sizeof(t_list) + size) == (void *)-1)
 	{
-	  pthread_mutex_unlock(&global_lock);
+	  pthread_mutex_unlock(&g_global_lock);
 	  return (NULL);
 	}
       initlink(new_link, size);
     }
-  pthread_mutex_unlock(&global_lock);
+  pthread_mutex_unlock(&g_global_lock);
   return (new_link->data);
 }
